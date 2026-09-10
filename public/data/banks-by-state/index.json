@@ -1,0 +1,212 @@
+{
+  "Maharashtra": {
+    "file": "maharashtra.json",
+    "count": 22182,
+    "size": "7.91 MB"
+  },
+  "Gujarat": {
+    "file": "gujarat.json",
+    "count": 11135,
+    "size": "3.94 MB"
+  },
+  "Karnataka": {
+    "file": "karnataka.json",
+    "count": 12577,
+    "size": "4.49 MB"
+  },
+  "Haryana": {
+    "file": "haryana.json",
+    "count": 5032,
+    "size": "1.71 MB"
+  },
+  "Madhya Pradesh": {
+    "file": "madhya-pradesh.json",
+    "count": 7196,
+    "size": "2.45 MB"
+  },
+  "Andhra Pradesh": {
+    "file": "andhra-pradesh.json",
+    "count": 9898,
+    "size": "3.49 MB"
+  },
+  "Telangana": {
+    "file": "telangana.json",
+    "count": 4630,
+    "size": "1.67 MB"
+  },
+  "Rajasthan": {
+    "file": "rajasthan.json",
+    "count": 8066,
+    "size": "2.75 MB"
+  },
+  "Goa": {
+    "file": "goa.json",
+    "count": 557,
+    "size": "0.19 MB"
+  },
+  "Delhi": {
+    "file": "delhi.json",
+    "count": 4339,
+    "size": "1.47 MB"
+  },
+  "Punjab": {
+    "file": "punjab.json",
+    "count": 6961,
+    "size": "2.35 MB"
+  },
+  "Uttar Pradesh": {
+    "file": "uttar-pradesh.json",
+    "count": 15935,
+    "size": "5.46 MB"
+  },
+  "Chattisgarh": {
+    "file": "chattisgarh.json",
+    "count": 2090,
+    "size": "0.75 MB"
+  },
+  "Himachal Pradesh": {
+    "file": "himachal-pradesh.json",
+    "count": 2023,
+    "size": "0.68 MB"
+  },
+  "Jammu And Kashmir": {
+    "file": "jammu-and-kashmir.json",
+    "count": 1735,
+    "size": "0.59 MB"
+  },
+  "Odisha": {
+    "file": "odisha.json",
+    "count": 4606,
+    "size": "1.54 MB"
+  },
+  "West Bengal": {
+    "file": "west-bengal.json",
+    "count": 8350,
+    "size": "2.86 MB"
+  },
+  "Tamil Nadu": {
+    "file": "tamil-nadu.json",
+    "count": 12157,
+    "size": "4.27 MB"
+  },
+  "Assam": {
+    "file": "assam.json",
+    "count": 2328,
+    "size": "0.77 MB"
+  },
+  "Uttarakhand": {
+    "file": "uttarakhand.json",
+    "count": 2344,
+    "size": "0.80 MB"
+  },
+  "Bihar": {
+    "file": "bihar.json",
+    "count": 5347,
+    "size": "1.78 MB"
+  },
+  "Jharkhand": {
+    "file": "jharkhand.json",
+    "count": 2944,
+    "size": "1.00 MB"
+  },
+  "Kerala": {
+    "file": "kerala.json",
+    "count": 8728,
+    "size": "3.04 MB"
+  },
+  "Tripura": {
+    "file": "tripura.json",
+    "count": 375,
+    "size": "0.13 MB"
+  },
+  "Chandigarh": {
+    "file": "chandigarh.json",
+    "count": 433,
+    "size": "0.15 MB"
+  },
+  "Mizoram": {
+    "file": "mizoram.json",
+    "count": 152,
+    "size": "0.05 MB"
+  },
+  "Chhattisgarh": {
+    "file": "chhattisgarh.json",
+    "count": 874,
+    "size": "0.29 MB"
+  },
+  "GOA": {
+    "file": "goa.json",
+    "count": 304,
+    "size": "0.10 MB"
+  },
+  "Daman And Diu": {
+    "file": "daman-and-diu.json",
+    "count": 51,
+    "size": "0.02 MB"
+  },
+  "Manipur": {
+    "file": "manipur.json",
+    "count": 233,
+    "size": "0.08 MB"
+  },
+  "Nagaland": {
+    "file": "nagaland.json",
+    "count": 178,
+    "size": "0.06 MB"
+  },
+  "Dadra And Nagar Hav.": {
+    "file": "dadra-and-nagar-hav.json",
+    "count": 45,
+    "size": "0.02 MB"
+  },
+  "Andaman And Nico.In.": {
+    "file": "andaman-and-nicoin.json",
+    "count": 66,
+    "size": "0.02 MB"
+  },
+  "Sikkim": {
+    "file": "sikkim.json",
+    "count": 176,
+    "size": "0.06 MB"
+  },
+  "Dadra And Nagar Haveli And Daman And Diu": {
+    "file": "dadra-and-nagar-haveli-and-daman-and-diu.json",
+    "count": 35,
+    "size": "0.01 MB"
+  },
+  "Megalaya": {
+    "file": "megalaya.json",
+    "count": 252,
+    "size": "0.09 MB"
+  },
+  "Arunachal Pradesh": {
+    "file": "arunachal-pradesh.json",
+    "count": 151,
+    "size": "0.05 MB"
+  },
+  "Puducherry": {
+    "file": "puducherry.json",
+    "count": 88,
+    "size": "0.03 MB"
+  },
+  "Meghalaya": {
+    "file": "meghalaya.json",
+    "count": 153,
+    "size": "0.05 MB"
+  },
+  "Andaman And Nicobar Islands": {
+    "file": "andaman-and-nicobar-islands.json",
+    "count": 29,
+    "size": "0.01 MB"
+  },
+  "Pondicherry": {
+    "file": "pondicherry.json",
+    "count": 60,
+    "size": "0.02 MB"
+  },
+  "Lakshadweep": {
+    "file": "lakshadweep.json",
+    "count": 21,
+    "size": "0.01 MB"
+  }
+}

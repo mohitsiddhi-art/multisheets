@@ -47,3 +47,15 @@ tenp
 # IDE
 .vscode/
 .idea/
+
+# Deployment files (VPS-specific, not needed for Vercel)
+DEPLOY.md
+deploy.sh
+ecosystem.config.js
+nginx.conf
+
+# Claude
+.claude/
+AGENTS.md
+CLAUDE.md
+FINAL_AUDIT_REPORT.md
