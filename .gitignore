@@ -44,6 +44,10 @@ next-env.d.ts
 tenp
 *.log
 
+# Source data (too large for git, keep locally only)
+data/bank_branches.json
+data/pincodes.json
+
 # IDE
 .vscode/
 .idea/
