@@ -23,6 +23,34 @@ export default function Header() {
     setMobileOpen(false)
   }, [pathname])
 
+  // Focus trap for mobile menu
+  useEffect(() => {
+    if (!mobileOpen) return
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMobileOpen(false)
+        return
+      }
+      if (e.key === 'Tab') {
+        const menu = document.querySelector('.md\\:hidden.border-t')
+        if (!menu) return
+        const focusable = menu.querySelectorAll<HTMLElement>('a[href], button, [tabindex]:not([tabindex="-1"])')
+        if (focusable.length === 0) return
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault()
+          last.focus()
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault()
+          first.focus()
+        }
+      }
+    }
+    document.addEventListener('keydown', handleKey)
+    return () => document.removeEventListener('keydown', handleKey)
+  }, [mobileOpen])
+
   const navLinks = [
     { label: t.nav.home, href: '/' },
     { label: t.nav.search, href: '/search' },

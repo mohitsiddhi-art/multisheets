@@ -58,6 +58,41 @@ export default function RootLayout({
     >
       <head>
         <link rel="icon" href="/favicon.ico" />
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'Multisheets',
+              url: 'https://multisheets.com',
+              description:
+                'Find Indian PIN codes, Post Offices, IFSC codes, and Bank Branches instantly.',
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: {
+                  '@type': 'EntryPoint',
+                  urlTemplate: 'https://multisheets.com/search?q={search_term_string}',
+                },
+                'query-input': 'required name=search_term_string',
+              },
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Multisheets',
+              url: 'https://multisheets.com',
+              logo: 'https://multisheets.com/icon-512.svg',
+              sameAs: [],
+            }),
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col">
         {/* Inline script to set theme before paint — avoids flash */}

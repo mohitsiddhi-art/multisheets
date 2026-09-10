@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { Metadata } from 'next'
 
 // India Post Speed Post rates (as of 2024-2025)
 // Zone 1: Within city, Zone 2: Within state, Zone 3: Metro to metro, Zone 4: Rest of India

@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Metadata } from 'next'
 
 // Metadata for SEO (rendered by layout, but this is a client component)
 // Set via a parent or via head.tsx if needed. For now, keep it as client.

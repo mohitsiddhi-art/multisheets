@@ -49,6 +49,13 @@ const tools = [
     icon: '🔍',
     category: 'Validator',
   },
+  {
+    title: 'Address Validator',
+    desc: 'Validate and format Indian addresses with PIN code verification',
+    href: '/tools/address-validator',
+    icon: '📮',
+    category: 'Validator',
+  },
 ]
 
 export default function ToolsPage() {

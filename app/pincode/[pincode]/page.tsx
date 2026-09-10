@@ -3,6 +3,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { findPincode, findAllPincodes, findAllBranchesByPincode } from '@/lib/india-data'
 import { CopyButton, ShareButton } from '@/components/CopyShareButtons'
+import { BreadcrumbJsonLd } from '@/components/JsonLd'
 
 type Props = { params: Promise<{ pincode: string }> }
 
@@ -33,6 +34,13 @@ export default async function PincodeDetail({ params }: Props) {
 
   return (
     <div className="min-h-screen flex flex-col pt-20">
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Search', url: '/search' },
+          { name: `${office.pincode}`, url: `/pincode/${office.pincode}` },
+        ]}
+      />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-16">
         {/* Breadcrumb */}
         <nav className="mb-6 text-sm text-slate-500 dark:text-slate-400" aria-label="Breadcrumb">

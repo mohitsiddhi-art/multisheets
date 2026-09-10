@@ -29,7 +29,16 @@ const nextConfig: NextConfig = {
               "connect-src 'self'",
               "manifest-src 'self'",
               "worker-src 'self' blob:",
+              "frame-ancestors 'none'",
+              "form-action 'self'",
+              "base-uri 'self'",
+              "upgrade-insecure-requests",
             ].join('; '),
+          },
+          // HSTS - force HTTPS
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains; preload',
           },
         ],
       },

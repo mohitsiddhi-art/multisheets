@@ -349,7 +349,7 @@ export default function SearchBox({ initialQuery = '', initialFilter = 'all' }: 
 
       {/* Results */}
       {results.length > 0 && (
-        <div className="mt-6" role="list" aria-label={t.resultsFound(results.length)}>
+        <div className="mt-6" role="list" aria-label={t.resultsFound(results.length)} aria-live="polite" aria-atomic="false">
           <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-50 mb-4">
             {t.resultsFound(results.length)}
           </h2>
