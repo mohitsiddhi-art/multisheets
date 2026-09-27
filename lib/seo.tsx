@@ -35,13 +35,21 @@ export function canonical(path = '/'): Metadata {
   return { alternates: { canonical: path } }
 }
 
-/** The site's social profiles, used for Organization.sameAs. */
-export const SOCIAL_PROFILES = [
-  'https://facebook.com/multisheets',
-  'https://x.com/multisheets',
-  'https://instagram.com/multisheets',
-  'https://t.me/multisheets',
-]
+/**
+ * Social profiles for Organization.sameAs.
+ *
+ * INTENTIONALLY EMPTY. The previous list (facebook/x/instagram/t.me
+ * /multisheets) returned 404 or an error on every check, and a sameAs URL
+ * that does not resolve is a trust liability, not a ranking win — Google
+ * treats an unverifiable sameAs as a claim it cannot confirm.
+ *
+ * Add a URL here only after opening it in a logged-out browser and
+ * confirming it loads a real profile owned by this site. If you are not
+ * sure, leave it out. `sameAs` is omitted from the Organization JSON-LD
+ * entirely while this list is empty, which is valid and better than a
+ * broken value.
+ */
+export const SOCIAL_PROFILES: string[] = []
 
 // ---------------------------------------------------------------
 // Structured data

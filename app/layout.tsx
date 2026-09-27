@@ -99,7 +99,8 @@ export default function RootLayout({
               },
               description:
                 'Free lookup tool for Indian PIN codes, post offices, IFSC codes and bank branches.',
-              sameAs: SOCIAL_PROFILES,
+              // Omitted entirely when empty rather than emitting `sameAs: []`.
+              ...(SOCIAL_PROFILES.length > 0 ? { sameAs: SOCIAL_PROFILES } : {}),
               contactPoint: {
                 '@type': 'ContactPoint',
                 contactType: 'customer support',

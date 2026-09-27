@@ -3,8 +3,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { findBranch } from '@/lib/india-data'
 import { CopyButton, ShareButton } from '@/components/CopyShareButtons'
-import { BreadcrumbJsonLd } from '@/components/JsonLd'
-import { canonical } from '@/lib/seo'
+import { canonical, breadcrumbJsonLd, JsonLdScript } from '@/lib/seo'
 
 type Props = { params: Promise<{ ifsc: string }> }
 
@@ -37,12 +36,12 @@ export default async function IfscDetail({ params }: Props) {
 
   return (
     <div className="min-h-screen flex flex-col pt-20">
-      <BreadcrumbJsonLd
-        items={[
+      <JsonLdScript
+        data={breadcrumbJsonLd([
           { name: 'Home', url: '/' },
           { name: 'Search', url: '/search' },
           { name: branch.ifsc, url: `/ifsc/${branch.ifsc}` },
-        ]}
+        ])}
       />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-16">
         {/* Breadcrumb */}
