@@ -11,8 +11,13 @@ enforcing layer, and the Node process must not be reachable except through it.
 | `nginx.multisheets.conf` | Reverse proxy, TLS, rate limits, hard blocks for secret-file scanners |
 | `ecosystem.config.cjs` | PM2 process definition for `next start` |
 
-Both files use `uXXXX` and a placeholder `cwd`. Replace them with the real
-Hostinger username and project path before running.
+Both files are configured for this host:
+
+- user `u747113332`
+- project `/home/u747113332/domains/multisheets.com/public_html`
+- SSH `ssh -p 65002 u747113332@82.112.229.152`
+
+The only thing you must supply is the SSH password, which is not stored here.
 
 ## Why the config is not optional
 
