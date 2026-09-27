@@ -1,10 +1,16 @@
 import { Metadata } from 'next'
 import SearchBoxClient from '@/components/SearchBoxClient'
 import { Suspense } from 'react'
+import { canonical } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Search — Multisheets',
   description: 'Unified Smart Search for Indian PIN codes and IFSC codes',
+  // The results themselves come from ?q=, so every query string is a
+  // duplicate of the same page. Keep it out of the index but let crawlers
+  // follow the links out of it.
+  robots: { index: false, follow: true },
+  ...canonical('/search'),
 }
 
 function SearchBoxClientFallback() {

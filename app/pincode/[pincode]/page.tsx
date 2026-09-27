@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { findPincode, findAllPincodes, findAllBranchesByPincode } from '@/lib/india-data'
 import { CopyButton, ShareButton } from '@/components/CopyShareButtons'
 import { BreadcrumbJsonLd } from '@/components/JsonLd'
+import { canonical } from '@/lib/seo'
 
 type Props = { params: Promise<{ pincode: string }> }
 
@@ -15,6 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${o.pincode} — ${o.office_name}, ${o.district} (${o.state})`,
     description: `${o.office_name} post office, PIN ${o.pincode} — ${o.district}, ${o.state}. Office type: ${o.office_type}. Delivery: ${o.delivery}.`,
+    ...canonical(`/pincode/${o.pincode}`),
   }
 }
 

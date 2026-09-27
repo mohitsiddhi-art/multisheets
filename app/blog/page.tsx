@@ -1,9 +1,11 @@
 import { Metadata } from 'next'
+import { canonical } from '@/lib/seo'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Blog — Multisheets',
   description: 'Guides and articles about Indian PIN codes, IFSC codes, postal services, and banking.',
+  ...canonical('/blog'),
 }
 
 const POSTS = [

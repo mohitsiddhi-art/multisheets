@@ -1,15 +1,42 @@
 import { Metadata } from 'next'
+import { canonical, articleJsonLd, breadcrumbJsonLd, howToJsonLd, JsonLdScript } from '@/lib/seo'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'How to Find Your IFSC Code in 30 Seconds — Multisheets',
   description: 'Four ways to find your bank branch IFSC code — on a cheque, in your passbook, via net banking, or using a search engine.',
+  ...canonical('/blog/how-to-find-ifsc-code'),
 }
 
 export default function HowToFindIfsc() {
+  const description = metadata.description as string
+  const article = articleJsonLd({
+    title: 'How to Find Your IFSC Code in 30 Seconds',
+    description,
+    url: '/blog/how-to-find-ifsc-code',
+    datePublished: '2026-08-28',
+  })
+  const breadcrumb = breadcrumbJsonLd([
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blog' },
+    { name: 'How to Find Your IFSC Code in 30 Seconds', url: '/blog/how-to-find-ifsc-code' },
+  ])
+  const howTo = howToJsonLd({
+    name: 'How to Find Your IFSC Code in 30 Seconds',
+    description,
+    steps: [
+      { name: 'On a cheque leaf', text: 'Look at the left-hand side of your cheque leaf, just below the MICR number, where the IFSC is printed.' },
+      { name: 'In your passbook', text: 'Open your passbook to the first page, where the IFSC appears alongside your account number and branch address.' },
+      { name: 'Net banking or the bank app', text: 'Log in to net banking and open Account Details or Branch Details; on mobile apps, check under Profile or Account Information.' },
+      { name: 'Use a search engine', text: 'Search for your bank name and branch on Multisheets to instantly find the matching IFSC code.' },
+    ],
+  })
   return (
     <div className="min-h-screen flex flex-col pt-20">
       <article className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-16">
+        <JsonLdScript data={article} />
+        <JsonLdScript data={breadcrumb} />
+        <JsonLdScript data={howTo} />
         <nav className="mb-6 text-sm text-slate-500 dark:text-slate-400" aria-label="Breadcrumb">
           <Link href="/blog" className="hover:text-primary transition">Blog</Link>
           <span className="mx-2">/</span>

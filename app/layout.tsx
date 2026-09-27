@@ -5,6 +5,7 @@ import Providers from '@/components/Providers'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ServiceWorkerRegister from '@/components/ServiceWorkerRegister'
+import { SITE_URL, SOCIAL_PROFILES } from '@/lib/seo'
 
 const notoSans = Noto_Sans({
   subsets: ['latin', 'devanagari'],
@@ -66,14 +67,16 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'WebSite',
               name: 'Multisheets',
-              url: 'https://multisheets.com',
+              url: SITE_URL,
               description:
                 'Find Indian PIN codes, Post Offices, IFSC codes, and Bank Branches instantly.',
+              inLanguage: 'en-IN',
+              publisher: { '@id': `${SITE_URL}/#organization` },
               potentialAction: {
                 '@type': 'SearchAction',
                 target: {
                   '@type': 'EntryPoint',
-                  urlTemplate: 'https://multisheets.com/search?q={search_term_string}',
+                  urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
                 },
                 'query-input': 'required name=search_term_string',
               },
@@ -86,10 +89,23 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Organization',
+              '@id': `${SITE_URL}/#organization`,
               name: 'Multisheets',
-              url: 'https://multisheets.com',
-              logo: 'https://multisheets.com/icon-512.svg',
-              sameAs: [],
+              alternateName: 'Multisheets.com',
+              url: SITE_URL,
+              logo: {
+                '@type': 'ImageObject',
+                url: `${SITE_URL}/icon-512.svg`,
+              },
+              description:
+                'Free lookup tool for Indian PIN codes, post offices, IFSC codes and bank branches.',
+              sameAs: SOCIAL_PROFILES,
+              contactPoint: {
+                '@type': 'ContactPoint',
+                contactType: 'customer support',
+                url: `${SITE_URL}/contact`,
+                availableLanguage: ['en', 'hi'],
+              },
             }),
           }}
         />

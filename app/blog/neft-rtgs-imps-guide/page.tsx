@@ -1,15 +1,31 @@
 import { Metadata } from 'next'
+import { canonical, articleJsonLd, breadcrumbJsonLd, JsonLdScript } from '@/lib/seo'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'NEFT, RTGS, and IMPS: What Each Means for Your Transfers — Multisheets',
   description: 'The differences between India’s three main electronic transfer systems — NEFT, RTGS, and IMPS — with limits, timings, and fees.',
+  ...canonical('/blog/neft-rtgs-imps-guide'),
 }
 
 export default function NeftRtgsImpsGuide() {
+  const description = metadata.description as string
+  const article = articleJsonLd({
+    title: 'NEFT, RTGS, and IMPS: What Each Means for Your Transfers',
+    description,
+    url: '/blog/neft-rtgs-imps-guide',
+    datePublished: '2026-07-16',
+  })
+  const breadcrumb = breadcrumbJsonLd([
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blog' },
+    { name: 'NEFT, RTGS, and IMPS: What Each Means for Your Transfers', url: '/blog/neft-rtgs-imps-guide' },
+  ])
   return (
     <div className="min-h-screen flex flex-col pt-20">
       <article className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-16">
+        <JsonLdScript data={article} />
+        <JsonLdScript data={breadcrumb} />
         <nav className="mb-6 text-sm text-slate-500 dark:text-slate-400" aria-label="Breadcrumb">
           <Link href="/blog" className="hover:text-primary transition">Blog</Link>
           <span className="mx-2">/</span>

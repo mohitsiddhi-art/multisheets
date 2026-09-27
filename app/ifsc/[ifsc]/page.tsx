@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { findBranch } from '@/lib/india-data'
 import { CopyButton, ShareButton } from '@/components/CopyShareButtons'
 import { BreadcrumbJsonLd } from '@/components/JsonLd'
+import { canonical } from '@/lib/seo'
 
 type Props = { params: Promise<{ ifsc: string }> }
 
@@ -15,6 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${branch.ifsc} — ${branch.bank_name}, ${branch.branch_name}`,
     description: `IFSC ${branch.ifsc} — ${branch.bank_name}, ${branch.branch_name}, ${branch.city}, ${branch.district}, ${branch.state}. MICR: ${branch.micr}. NEFT: ${branch.neft ? 'Yes' : 'No'}.`,
+    ...canonical(`/ifsc/${branch.ifsc}`),
   }
 }
 

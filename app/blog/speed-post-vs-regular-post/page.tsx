@@ -1,15 +1,31 @@
 import { Metadata } from 'next'
+import { canonical, articleJsonLd, breadcrumbJsonLd, JsonLdScript } from '@/lib/seo'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Speed Post vs Regular Post: Which Should You Use? — Multisheets',
   description: 'Compare Speed Post and regular (bulk/parcel) post in India — delivery times, costs, tracking, and when each makes sense.',
+  ...canonical('/blog/speed-post-vs-regular-post'),
 }
 
 export default function SpeedPostVsRegular() {
+  const description = metadata.description as string
+  const article = articleJsonLd({
+    title: 'Speed Post vs Regular Post: Which Should You Use?',
+    description,
+    url: '/blog/speed-post-vs-regular-post',
+    datePublished: '2026-07-30',
+  })
+  const breadcrumb = breadcrumbJsonLd([
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blog' },
+    { name: 'Speed Post vs Regular Post: Which Should You Use?', url: '/blog/speed-post-vs-regular-post' },
+  ])
   return (
     <div className="min-h-screen flex flex-col pt-20">
       <article className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-16">
+        <JsonLdScript data={article} />
+        <JsonLdScript data={breadcrumb} />
         <nav className="mb-6 text-sm text-slate-500 dark:text-slate-400" aria-label="Breadcrumb">
           <Link href="/blog" className="hover:text-primary transition">Blog</Link>
           <span className="mx-2">/</span>
