@@ -26,6 +26,33 @@ function rateLimit(ip: string): boolean {
   return entry.count <= RATE_LIMIT
 }
 
+/**
+ * Resolve the client IP for rate limiting.
+ *
+ * `x-forwarded-for` is CLIENT-SUPPLIED. An attacker can put a fresh random
+ * value in it on every request and the limiter would treat each one as a
+ * new IP, making the 60/min cap meaningless.
+ *
+ * So we do not trust the first value in the chain. We take the LAST one,
+ * which is the entry our own proxy appended, because an attacker forging
+ * the header can only prepend to it, not rewrite what nginx adds. If the
+ * header is missing or unparseable we fall back to a single shared bucket
+ * rather than trusting anything.
+ */
+function clientIp(request: NextRequest): string {
+  const xff = request.headers.get('x-forwarded-for')
+  if (xff) {
+    const chain = xff.split(',').map((s) => s.trim()).filter(Boolean)
+    // Last hop is the one added by the nearest trusted proxy.
+    if (chain.length > 0) return chain[chain.length - 1]
+  }
+  const realIp = request.headers.get('x-real-ip')?.trim()
+  if (realIp) return realIp
+  // No trustworthy client identity — share one bucket so the limit still
+  // applies instead of falling open.
+  return 'unidentified'
+}
+
 // Evict stale entries every 5 minutes
 setInterval(() => {
   const now = Date.now()
@@ -35,15 +62,34 @@ setInterval(() => {
 }, 300_000)
 
 export async function GET(request: NextRequest) {
-  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || request.headers.get('x-real-ip') || '127.0.0.1'
+  const ip = clientIp(request)
   if (!rateLimit(ip)) {
     return NextResponse.json({ error: 'Too many requests. Please try again in a minute.' }, { status: 429 })
   }
   const { searchParams } = new URL(request.url)
 
-  const q = searchParams.get('q')?.trim() || ''
-  const filter = (searchParams.get('filter') as SearchFilter) || 'all'
-  const limit = Math.min(parseInt(searchParams.get('limit') || '100', 10), 100)
+  // Bound the query. An unbounded string is scanned with .includes() across
+  // every indexed record, so a multi-megabyte query turns a cheap request
+  // into a CPU spike.
+  const rawQ = searchParams.get('q')?.trim() || ''
+  if (rawQ.length > 100) {
+    return NextResponse.json(
+      { error: 'Query too long. Please use 100 characters or fewer.' },
+      { status: 400 },
+    )
+  }
+  const q = rawQ
+
+  const filterParam = searchParams.get('filter')
+  const filter: SearchFilter =
+    filterParam === 'ifsc' || filterParam === 'bank' || filterParam === 'pincode' || filterParam === 'location'
+      ? filterParam
+      : 'all'
+
+  // parseInt returns NaN for "abc", and Math.min(NaN, 100) is NaN — which
+  // would flow into the search as an unbounded limit. Clamp explicitly.
+  const parsedLimit = Number.parseInt(searchParams.get('limit') || '', 10)
+  const limit = Number.isFinite(parsedLimit) ? Math.min(Math.max(parsedLimit, 1), 100) : 100
 
   if (!q) {
     return NextResponse.json({ results: [], suggestions: [] })

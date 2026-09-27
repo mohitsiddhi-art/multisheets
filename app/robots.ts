@@ -60,7 +60,36 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/'],
+        disallow: [
+          '/api/',
+          // Honeypot paths. No legitimate crawler has any reason to fetch
+          // these — the site has no admin panel, no .env on the web, and
+          // no WordPress. Disallowing them keeps well-behaved bots out of
+          // the trap and out of the blocklist.
+          '/admin',
+          '/administrator',
+          '/panel',
+          '/wp-',
+          '/phpmyadmin',
+          '/xmlrpc.php',
+          '/vendor/',
+          '/.env',
+          '/.git',
+          '/.svn',
+          '/.hg',
+          '/.aws',
+          '/.ssh',
+          '/.kube',
+          '/.htaccess',
+          '/cgi-bin',
+          '/config.json',
+          '/config.php',
+          '/Dockerfile',
+          '/package.json',
+          '/backup',
+          '/dump.sql',
+          '/database.sql',
+        ],
       },
     ],
     sitemap: 'https://multisheets.com/sitemap.xml',
