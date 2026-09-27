@@ -56,7 +56,7 @@ export default function SpeedPostVsRegular() {
 
           <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-50">Cost</h2>
           <ul className="list-disc list-inside space-y-1">
-            <li><strong>Speed Post:</strong> starts higher (around ₹15–45 for letters under 0.5 kg depending on zone).</li>
+            <li><strong>Speed Post Parcel:</strong> from ₹28 for a local consignment up to 500 g, and ₹90 for the same weight to another state, under the retail tariff effective 1 August 2026. GST is charged on top.</li>
             <li><strong>Regular post:</strong> usually cheaper for non-urgent documents and small parcels.</li>
           </ul>
 

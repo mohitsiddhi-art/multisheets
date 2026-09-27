@@ -1,8 +1,10 @@
 import { Metadata } from 'next'
+import { canonical } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Disclaimer — Multisheets',
   description: 'Multisheets disclaimer — data accuracy, third-party information, and usage terms.',
+  ...canonical('/disclaimer'),
 }
 
 export default function DisclaimerPage() {
@@ -49,9 +51,11 @@ export default function DisclaimerPage() {
           <section>
             <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-50 mb-3">4. Speed Post rates</h2>
             <p>
-              Speed Post rate estimates are indicative and based on published tariff tables. Actual
-              charges are determined by India Post and may change without notice. Always confirm rates
-              at your local post office.
+              Speed Post Parcel figures are the India Post retail tariff effective 1 August 2026
+              (S.O. 4241(E), Gazette of India dated 31 July 2026) and exclude GST. Registration,
+              insurance and proof-of-delivery are charged separately, and bulk or contractual rates
+              differ. India Post revises tariffs without notice, so always confirm the final
+              charge at your local post office before dispatch.
             </p>
           </section>
 

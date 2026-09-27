@@ -70,9 +70,10 @@ nginx. Read it with `tail -f` to see scanners arriving.
 
 ## Known follow-ups
 
-- The Speed Post calculator and the Speed Post article still use pre-October
-  2026 tariffs. Update both against the India Post notification before
-  publishing.
+- The Speed Post calculator carries the India Post retail tariff effective
+  1 August 2026 (S.O. 4241(E), Gazette of India dated 31 July 2026), excluding
+  GST. Re-check it whenever India Post issues a new tariff notification, and
+  update `RATES` and `PER_EXTRA_KG` in `app/tools/speed-post/page.tsx`.
 - `components/Footer.tsx` links to social profiles that returned 404 during
   verification. `SOCIAL_PROFILES` in `lib/seo.tsx` is empty for the same
   reason, which is why `Organization.sameAs` is omitted from the JSON-LD.

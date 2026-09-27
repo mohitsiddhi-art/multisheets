@@ -41,6 +41,6 @@ export const FAQS = [
   },
   {
     q: 'Are the speed post rates official?',
-    a: 'The Speed Post rates shown are indicative figures based on published India Post tariffs. Actual charges may vary — always confirm with your local post office before dispatch.',
+    a: 'The figures shown are India Post Speed Post Parcel retail tariffs, effective 1 August 2026 under S.O. 4241(E) of 31 July 2026, and exclude GST. Registration, insurance and proof-of-delivery are charged separately. Bulk and contractual rates differ. Always confirm the final amount with your local post office before dispatch.',
   },
 ]
